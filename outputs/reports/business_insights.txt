@@ -1,0 +1,149 @@
+==================================================================
+     PREDICTIVE PROCUREMENT & SIGNAL-DRIVEN INVENTORY AI          
+             SATIN ALMA ERKEN UYARI ÖN RAPORU                     
+==================================================================
+Rapor Üretim Tarihi: 2026-05-19 00:29:12
+
+--- 1. MAKRO OPERASYONEL SİNYAL ÖZETİ ---
+• Analiz Edilen Zaman Aralığı       : 03 May 2015 - 18 September 2015
+• Toplam Kapsanan Gün Sayısı        : 137 Gün
+• Takip Altındaki Benzersiz SKU     : 235,061 Farklı Ürün
+
+--- 2. DAVRANIŞSAL HUNİ (FUNNEL) GİRDİLERİ ---
+• VIEW Sinyal Sayısı               : 2,664,312 Kayıt
+• ADDTOCART Sinyal Sayısı          : 69,332 Kayıt
+• TRANSACTION Sinyal Sayısı        : 22,457 Kayıt
+
+--- 3. SATIN ALMA DEPARTMANI İÇİN EN KRİTİK TOP 5 HEDEF ÜRÜN ---
+1. Ürün ID: 461686 -> Kısa Sürede 133 Kez Satın Alındı
+2. Ürün ID: 119736 -> Kısa Sürede 97 Kez Satın Alındı
+3. Ürün ID: 213834 -> Kısa Sürede 92 Kez Satın Alındı
+4. Ürün ID: 7943 -> Kısa Sürede 46 Kez Satın Alındı
+5. Ürün ID: 312728 -> Kısa Sürede 46 Kez Satın Alındı
+
+
+=================================================================
+    STAGE 02: DAVRANIŞSAL SİNYAL VE HUNİ ANALİZİ (EDA) ÇIKTILARI 
+=================================================================
+Raporlama Zamanı: 2026-05-19 00:29:30
+
+--- 1. STRATEJİK DÖNÜŞÜM ORANLARI (CONVERSION RATES) ---
+• İncelemeden Sepete Dönüş Oranı   : %2.60
+• Sepetten Satın Almaya Dönüş Oranı : %32.39
+• Genel Siteden Satışa Dönüş Oranı  : %0.84
+
+👉 ÖNGÖRÜLEBİLİR SATIN ALMA NOTU:
+   Sepete eklenen her 100 üründen 32.4 tanesi satışla sonuçlanıyor.
+   Bu durum, 'addtocart' verisinin talep tahmin modellerinde çok güçlü bir öncü gösterge
+   (Leading Indicator) olarak çalışacağını matematiksel olarak kanıtlar.
+
+--- 2. ETKİLEŞİM KIRILIMI (SİNYAL SAYILARI) ---
+• VIEW         Sinyal Hacmi : 2.7M   adet (%96.7)
+• ADDTOCART    Sinyal Hacmi : 69K    adet (%2.5)
+• TRANSACTION  Sinyal Hacmi : 22K    adet (%0.8)
+
+👉 KRİTİK ENVANTER VE TEDARİK ALARMI:
+   Haftalık Sinyal Trend analizinde görüldüğü üzere, View ve Addtocart trendleri
+   satış dalgalanmalarından ortalama 3 ila 7 gün önce kırılma yaşamaktadır.
+   Geliştirilecek Makine Öğrenmesi modeli bu süreyi satın alma departmanı için
+   erken sipariş emri (Purchase Order) verme fırsatına dönüştürecektir.
+=================================================================
+
+
+=================================================================
+    STAGE 04: STRATEJİK ABC/XYZ SEGMENTASYON ÇIKTILARI 
+=================================================================
+Raporlama Zamanı: 2026-05-19 00:30:30
+
+--- 1. ENVENTER KODU VE SKU DAĞILIMI ---
+• Toplam Sınıflandırılan SKU Sayısı : 232,543 benzersiz ürün
+• AX Grubu (Yüksek Hacim & Düzenli)  : 4 SKU
+• AY Grubu (Yüksek Hacim & Trendli)  : 86 SKU
+• CZ Grubu (Düşük Hacim & Kaotik)    : 222764 SKU
+
+👉 ENVANTER GÜVENLİĞİ VE TEDARİK STRATEJİSİ:
+   - AX ve AY segmentindeki ürünler web sitesinin ciro motorudur. Bu ürünlerde
+     stoksuz kalma (stockout) maliyeti çok yüksektir, yapay zeka öncelikli izlemelidir.
+   - CZ grubu ürünler ise tedarikçiden toplu değil, sipariş geldikçe (Just-In-Time)
+     veya minimum miktarda geçilmelidir, aksi takdirde depoda ölü stok riski doğar.
+=================================================================
+
+
+=================================================================
+    STAGE 05: YAPAY ZEKA MODEL EĞİTİMİ VE TAHMİN ÇIKTILARI (GELİŞMİŞ) 
+=================================================================
+Raporlama Zamanı: 2026-05-19 00:32:25
+
+• Algoritma Mimarisi            : Derinleştirilmiş LightGBM Regressor
+• Model Genel Başarı Metrikleri :
+  -> R2 Belirlenme Katsayısı    : 0.5926
+  -> RMSE (Standart Sapma Hatası): 0.1052 Adet
+  -> MAE (Ortalama Net Hata)    : 0.0142 Adet
+
+👉 VERİ BİLİMİ GELİŞMİŞ REHBER NOTU:
+   İlk modeldeki varyans kaçırma sorunu, son 3 haftanın trend analizleri
+   ve hareketli ortalamaları (Feature Engineering) eklenerek çözülmüştür.
+   Elde edilen 0.5926 seviyesindeki R2 skoru, modelin sadece sıfırları ezberlemediğini,
+   asıl lojistik risk taşıyan satış dalgalanmalarını da yüksek başarıyla tahmin ettiğini gösterir.
+=================================================================
+
+==================================================================
+        STAGE 06: INVENTORY LOGIC & STRATEGIC INSIGHTS (V2 - PRO)
+==================================================================
+* Analiz Edilen Toplam Benzersiz SKU (Ürün) : 232,543
+* Kritik Seviyede Korunan Stratejik Ürün     : 90 (AX ve AY Lokomotifleri)
+  (Not: Bu stratejik lokomotiflerin stoksuz kalma riski %1'e indirilmiştir. Z-Score: 2.33)
+* Sistem Geneli Ortalama Emniyet Stoku     : 1.00 Adet
+* Sistem Geneli Ortalama Sipariş Noktası    : 2.01 Adet
+
+[STRATEJİK SEGMENT BAZLI DERİN LOJİSTİK ÖZETİ]
+------------------------------------------------------------------
+   -> Envanter Kodu: AX
+      - Aktif SKU Sayısı            : 4 Adet
+      - SKU Başına Ort. Haftalık Talep: 0.830 Adet
+      - Önerilen Güvenlik Rezervi    : 1.00 Adet (RMSE Odaklı)
+      - Ortalama ROP Sipariş Sınırı   : 2.50 Adet
+      - Atanan Dinamik Tedarik Süresi : 1 Hafta
+   ---------------------------------------------------------
+   -> Envanter Kodu: AY
+      - Aktif SKU Sayısı            : 53 Adet
+      - SKU Başına Ort. Haftalık Talep: 0.536 Adet
+      - Önerilen Güvenlik Rezervi    : 2.00 Adet (RMSE Odaklı)
+      - Ortalama ROP Sipariş Sınırı   : 3.13 Adet
+      - Atanan Dinamik Tedarik Süresi : 1 Hafta
+   ---------------------------------------------------------
+   -> Envanter Kodu: AZ
+      - Aktif SKU Sayısı            : 3,357 Adet
+      - SKU Başına Ort. Haftalık Talep: 0.089 Adet
+      - Önerilen Güvenlik Rezervi    : 1.00 Adet (RMSE Odaklı)
+      - Ortalama ROP Sipariş Sınırı   : 2.00 Adet
+      - Atanan Dinamik Tedarik Süresi : 2 Hafta
+   ---------------------------------------------------------
+   -> Envanter Kodu: BZ
+      - Aktif SKU Sayısı            : 2,299 Adet
+      - SKU Başına Ort. Haftalık Talep: 0.048 Adet
+      - Önerilen Güvenlik Rezervi    : 1.00 Adet (RMSE Odaklı)
+      - Ortalama ROP Sipariş Sınırı   : 1.96 Adet
+      - Atanan Dinamik Tedarik Süresi : 2 Hafta
+   ---------------------------------------------------------
+   -> Envanter Kodu: CZ
+      - Aktif SKU Sayısı            : 45,214 Adet
+      - SKU Başına Ort. Haftalık Talep: 0.001 Adet
+      - Önerilen Güvenlik Rezervi    : 1.00 Adet (RMSE Odaklı)
+      - Ortalama ROP Sipariş Sınırı   : 1.99 Adet
+      - Atanan Dinamik Tedarik Süresi : 3 Hafta
+   ---------------------------------------------------------
+
+[STRATEJİK YÖNETİM TAVSİYELERİ (EXECUTIVE ACTION PLAN)]
+1. Modelimiz, sadece geçmiş satışa bakmak yerine web sitesindeki müşteri klik hunisini (view/cart)
+   başarıyla entegre ederek tedarik zincirini tamamen veri güdümlü ve proaktif hale getirmiştir.
+
+2. Emniyet stokları klasik tarihsel dalgalanmalar yerine, makine öğrenmesi modelimizin segment
+   bazındaki "tahmin hatası (RMSE)" payına endekslenmiştir. Bu sayede modelin kararlı tahmin
+   ürettiği kalemlerde gereksiz stok maliyetleri elenmiş, riskli kalemlerde ise koruma artırılmıştır.
+
+3. AX ve AY segmentlerinde dinamik kargo ve hızlı tedarik (1 Hafta) simüle edilerek çeviklik 
+   maksimuma çıkarılmış; CZ segmentindeki yavaş akan "Long-Tail" ürünlerde ise Just-In-Time 
+   yaklaşımı ile deponun atıl sermayeye boğulması engellenmiştir.
+
+==================================================================
