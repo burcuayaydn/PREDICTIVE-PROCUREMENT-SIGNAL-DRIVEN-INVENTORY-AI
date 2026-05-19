@@ -153,7 +153,7 @@ else:
     st.sidebar.write("---")
     st.sidebar.markdown("### 🛡️ Lojistik Parametreler")
 
-    # Canlı Z-Score Seçimi (Toplam emniyet stoğu altını besleyen slider)
+    # Canlı Z-Score Seçimi (Mevcut kodun)
     custom_z_high = st.sidebar.slider(
         "Hedef Z-Score (Kritik SKU):",
         min_value=1.00,
@@ -161,6 +161,16 @@ else:
         value=2.33,
         step=0.01,
         help="AX ve AY gibi yüksek ciro döngüsüne sahip ürün gruplarının hedef servis seviyesi çarpanı."
+    )
+
+    # --- YENİ EKLEYECEĞİN LEAD TIME SLIDER'I ---
+    custom_lead_time = st.sidebar.slider(
+        "Ortalama Tedarik Süresi (Lead Time - Gün):",
+        min_value=1,
+        max_value=30,
+        value=7,
+        step=1,
+        help="Sipariş verilen ürünlerin tedarikçiden depoya ulaşması için geçen ortalama gün süresi."
     )
 
     risk_multiplier = 1.0
