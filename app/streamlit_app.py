@@ -153,7 +153,7 @@ else:
     st.sidebar.write("---")
     st.sidebar.markdown("### 🛡️ Lojistik Parametreler")
 
-    # Canlı Z-Score Seçimi (Mevcut kodun)
+    # Canlı Z-Score Seçimi
     custom_z_high = st.sidebar.slider(
         "Hedef Z-Score (Kritik SKU):",
         min_value=1.00,
@@ -163,7 +163,7 @@ else:
         help="AX ve AY gibi yüksek ciro döngüsüne sahip ürün gruplarının hedef servis seviyesi çarpanı."
     )
 
-    # --- YENİ EKLEYECEĞİN LEAD TIME SLIDER'I ---
+    # Canlı Lead Time Seçimi
     custom_lead_time = st.sidebar.slider(
         "Ortalama Tedarik Süresi (Lead Time - Gün):",
         min_value=1,
@@ -189,10 +189,9 @@ else:
     df_current['segment_rmse'] = df_current.groupby('abc_xyz_rank', observed=False)['forecast_error'].transform(
         'std').fillna(0.1)
 
-    # Formülasyon tetikleyicileri
-    df_current['live_lead_time'] = np.where(df_current['abc_xyz_rank'].isin(['AX', 'AY']), 1, 2)
-    df_current.loc[df_current['abc_xyz_rank'] == 'CZ', 'live_lead_time'] = 3
-    df_current['live_lead_time'] = np.ceil(df_current['live_lead_time'] * risk_multiplier).astype(int)
+    # --- DİNAMİK LEAD TIME BAĞLANTISI ---
+    # Statik kuralları silip doğrudan slider'dan gelen dinamik değeri atıyoruz
+    df_current['live_lead_time'] = custom_lead_time
 
     # Slider'dan gelen canlı Z değerini buraya bağlıyoruz
     df_current['live_z'] = np.where(df_current['abc_xyz_rank'].isin(['AX', 'AY']), custom_z_high, 1.645)
@@ -200,8 +199,8 @@ else:
     df_current['sim_safety_stock'] = np.ceil(
         df_current['live_z'] * np.sqrt(df_current['live_lead_time']) * df_current['segment_rmse']).astype(int)
 
-    # Sipariş miktarını lojistik döngüye bağlama
-    df_current['sim_suggested_qty'] = np.ceil(df_current['pred_demand'] * (3 * risk_multiplier)).astype(int)
+    # Sipariş miktarını lojistik döngüye ve dinamik lead time'a (haftalık bazda) bağlama
+    df_current['sim_suggested_qty'] = np.ceil(df_current['pred_demand'] * (custom_lead_time / 7) * risk_multiplier).astype(int)
 
     # 5. YENİLENEN İŞ DÜNYASI METRİK PANELİ
     st.subheader(f"📈 {selected_date.strftime('%Y-%m-%d')} Operasyon Dönem Karnesi")
@@ -278,7 +277,6 @@ else:
             hide_index=True
         )
 
-        # 🎯 EN ALTTA KÜÇÜK PUNTOYLA KAYIT SAYISI BİLGİSİ
         st.markdown(
             f'<p class="table-footer">Filtre kriterlerine uyan toplam listelenen kayıt sayısı: <b>{len(df_filtered):,} SKU</b></p>',
             unsafe_allow_html=True)
