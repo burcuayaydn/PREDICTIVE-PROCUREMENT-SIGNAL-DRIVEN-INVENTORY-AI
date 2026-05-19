@@ -5,3 +5,11 @@ data/raw/
 *.parquet
 .idea/
 __pycache__/
+
+!data/processed/inventory_decisions.parquet
+!data/processed/engineered_features.parquet
+!data/processed/segmented_products.parquet
+!data/processed/time_series_weekly.parquet
+
+
+
