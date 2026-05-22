@@ -16,9 +16,9 @@ pd.set_option('display.float_format', lambda x: '%.3f' % x)
 def calculate_inventory_metrics_pro():
     print("Sistem: Yapay Zeka Hata Payı (RMSE) & Dinamik Lojistik Motoru tetiklendi...")
 
-    # 1. Klasör Yolları Kurulumu (Garantili Yapı)
-    script_dir = os.path.dirname(os.path.abspath(__file__))  # scripts klasörü
-    base_path = os.path.dirname(script_dir)  # Proje Kök Klasörü
+    # 1. Klasör Yolları Kurulumu
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    base_path = os.path.dirname(script_dir)
 
     os.makedirs(os.path.join(base_path, "data", "processed"), exist_ok=True)
     os.makedirs(os.path.join(base_path, "outputs", "reports"), exist_ok=True)

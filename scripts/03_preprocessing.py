@@ -12,10 +12,8 @@ def run_preprocessing():
     print("Sistem: Kesintisiz Zaman Matrisi (Time Grid) ve Feature Engineering Motoru tetiklendi...")
 
     # --- GARANTİLİ KÖK DİZİN BULMA MEKANİZMASI ---
-    # Çalıştırılan yer neresi olursa olsun, "RetailRocket" ana klasörünü bulur.
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
-    # Eğer projenin üst klasör adı farklıysa ("PythonProject" gibi), direkt script_dir üzerinden 1 tık yukarı çıkıyoruz
     if "RetailRocket" in current_dir:
         base_path = current_dir.split("RetailRocket")[0] + "RetailRocket"
     else:
@@ -28,7 +26,6 @@ def run_preprocessing():
     print(f"Sistem Kontrolü -> Çıktı dosyası buraya yazılacak:\n  {output_path}")
 
     if not os.path.exists(input_path):
-        # Eğer hala bulunamazsa alternatif olarak bulunulan yerin bir üstünü zorla dene
         alternative_base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
         input_path = os.path.normpath(os.path.join(alternative_base, "data", "processed", "master_data.parquet"))
         output_path = os.path.normpath(

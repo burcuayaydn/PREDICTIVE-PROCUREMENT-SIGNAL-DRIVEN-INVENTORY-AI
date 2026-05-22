@@ -2,7 +2,7 @@
      PREDICTIVE PROCUREMENT & SIGNAL-DRIVEN INVENTORY AI          
              SATIN ALMA ERKEN UYARI ÖN RAPORU                     
 ==================================================================
-Rapor Üretim Tarihi: 2026-05-19 00:29:12
+Rapor Üretim Tarihi: 2026-05-22 10:31:52
 
 --- 1. MAKRO OPERASYONEL SİNYAL ÖZETİ ---
 • Analiz Edilen Zaman Aralığı       : 03 May 2015 - 18 September 2015
@@ -25,7 +25,7 @@ Rapor Üretim Tarihi: 2026-05-19 00:29:12
 =================================================================
     STAGE 02: DAVRANIŞSAL SİNYAL VE HUNİ ANALİZİ (EDA) ÇIKTILARI 
 =================================================================
-Raporlama Zamanı: 2026-05-19 00:29:30
+Raporlama Zamanı: 2026-05-22 10:32:29
 
 --- 1. STRATEJİK DÖNÜŞÜM ORANLARI (CONVERSION RATES) ---
 • İncelemeden Sepete Dönüş Oranı   : %2.60
@@ -53,7 +53,7 @@ Raporlama Zamanı: 2026-05-19 00:29:30
 =================================================================
     STAGE 04: STRATEJİK ABC/XYZ SEGMENTASYON ÇIKTILARI 
 =================================================================
-Raporlama Zamanı: 2026-05-19 00:30:30
+Raporlama Zamanı: 2026-05-22 10:33:03
 
 --- 1. ENVENTER KODU VE SKU DAĞILIMI ---
 • Toplam Sınıflandırılan SKU Sayısı : 232,543 benzersiz ürün
@@ -69,23 +69,24 @@ Raporlama Zamanı: 2026-05-19 00:30:30
 =================================================================
 
 
-=================================================================
-    STAGE 05: YAPAY ZEKA MODEL EĞİTİMİ VE TAHMİN ÇIKTILARI (GELİŞMİŞ) 
-=================================================================
-Raporlama Zamanı: 2026-05-19 00:32:25
+======================================================================
+    STAGE 05: YAPAY ZEKA MODEL KARŞILAŞTIRMA VE LİDERLİK TABLOSU 
+======================================================================
+Raporlama Zamanı: 2026-05-22 10:40:03
 
-• Algoritma Mimarisi            : Derinleştirilmiş LightGBM Regressor
-• Model Genel Başarı Metrikleri :
-  -> R2 Belirlenme Katsayısı    : 0.5926
-  -> RMSE (Standart Sapma Hatası): 0.1052 Adet
-  -> MAE (Ortalama Net Hata)    : 0.0142 Adet
+Algoritma Modeli     | R2 Skoru   | RMSE Hatası  | MAE Hatası
+-----------------------------------------------------------------
+LightGBM             | 0.5926     | 0.1052       | 0.0142    
+XGBoost              | 0.5739     | 0.1076       | 0.0143    
+Random Forest        | 0.5430     | 0.1114       | 0.0140    
+-----------------------------------------------------------------
 
-👉 VERİ BİLİMİ GELİŞMİŞ REHBER NOTU:
-   İlk modeldeki varyans kaçırma sorunu, son 3 haftanın trend analizleri
-   ve hareketli ortalamaları (Feature Engineering) eklenerek çözülmüştür.
-   Elde edilen 0.5926 seviyesindeki R2 skoru, modelin sadece sıfırları ezberlemediğini,
-   asıl lojistik risk taşıyan satış dalgalanmalarını da yüksek başarıyla tahmin ettiğini gösterir.
-=================================================================
+👉 STRATEJİK SEÇİM NOTU:
+   Yapılan zamansal kronolojik testler sonucunda varyansı en başarılı şekilde çözen
+   ve en yüksek açıklayıcılık gücüne sahip olan 'LightGBM' şampiyon seçilmiştir.
+   Tedarik Kontrol Kulesi (Procurement Control Tower) üzerindeki tüm dinamik envanter
+   simülasyonları ve güvenlik stoğu tahminleri bu şampiyon modelin çıktıları ile beslenmektedir.
+======================================================================
 
 ==================================================================
         STAGE 06: INVENTORY LOGIC & STRATEGIC INSIGHTS (V2 - PRO)

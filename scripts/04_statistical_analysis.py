@@ -13,7 +13,7 @@ import seaborn as sns
 sns.set_theme(style="whitegrid")
 plt.rcParams['figure.figsize'] = [10, 6]
 
-# Dinamik Klasör Yapısı Ayarları (supply_chain/)
+# Dinamik Klasör Yapısı Ayarları
 script_dir = os.path.dirname(os.path.abspath(__file__))
 base_path = os.path.dirname(script_dir)
 

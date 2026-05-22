@@ -1,6 +1,6 @@
 # ==============================================================================
 # PROJE: PREDICTIVE PROCUREMENT & SIGNAL-DRIVEN INVENTORY AI
-# MODÜL: 01_DATA_LOADING.PY (RETAILROCKET CONTROL TOWER)
+# MODÜL: 01_DATA_LOADING.PY
 # ==============================================================================
 
 import pandas as pd
@@ -11,7 +11,7 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 500)
 pd.set_option('display.float_format', lambda x: '%.2f' % x)
 
-# Dinamik Klasör Yapısı (supply_chain/)
+# Dinamik Klasör Yapısı
 script_dir = os.path.dirname(os.path.abspath(__file__))
 base_path = os.path.dirname(script_dir)
 
@@ -46,7 +46,6 @@ def load_and_process_retailrocket():
     df_events['date'] = pd.to_datetime(df_events['timestamp'], unit='ms')
 
     print("\nSistem: 2. Aşama - Veri Optimizasyonu ve Filtreleme...")
-    # Sadece analizde ve modellemede kullanacağımız kritik sütunları süzüyoruz
     df_events_cleaned = df_events[['date', 'itemid', 'event', 'transactionid']].copy()
     df_events_cleaned.columns = ['date', 'item_id', 'event_type', 'transaction_id']
 

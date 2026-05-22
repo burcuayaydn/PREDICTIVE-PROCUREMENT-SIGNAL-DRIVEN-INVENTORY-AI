@@ -14,7 +14,7 @@ pd.set_option('display.max_columns', None)
 pd.set_option('display.width', 500)
 pd.set_option('display.float_format', lambda x: '%.3f' % x)
 
-# Dinamik Klasör Yapısı Ayarları (supply_chain/)
+# Dinamik Klasör Yapısı Ayarları
 script_dir = os.path.dirname(os.path.abspath(__file__))
 base_path = os.path.dirname(script_dir)
 
